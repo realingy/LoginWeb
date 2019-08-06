@@ -37,7 +37,7 @@ public class LoginServlet extends HttpServlet {
             Cookie c=new Cookie("uid",u.getUid()+"");
 
             //设置Cookie的有效期
-            c.setMaxAge(5*60);//5分钟
+            c.setMaxAge(5*60); //5分钟
             c.setPath("ck");
             //添加Cookie信息
             resp.addCookie(c);
@@ -50,6 +50,7 @@ public class LoginServlet extends HttpServlet {
             }
 
 //            resp.getWriter().write("登陆成功！");
+            req.setAttribute("uname", u.getUname());
             req.getRequestDispatcher("main").forward(req,resp);
         } else {
 //            resp.getWriter().write("登陆失败！");
