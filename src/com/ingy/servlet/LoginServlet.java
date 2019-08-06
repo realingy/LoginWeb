@@ -6,10 +6,7 @@ import com.ingy.service.impl.LoginServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "LoginServlet")
@@ -49,8 +46,12 @@ public class LoginServlet extends HttpServlet {
                 System.out.println(n + ":" + v);
             }
 
+            //将数据存储到session中
+            HttpSession hs=req.getSession();
+            hs.setAttribute("user",u);
+
 //            resp.getWriter().write("登陆成功！");
-            req.setAttribute("uname", u.getUname());
+//            req.setAttribute("uname", u.getUname());
             req.getRequestDispatcher("main").forward(req,resp);
         } else {
 //            resp.getWriter().write("登陆失败！");
@@ -59,7 +60,6 @@ public class LoginServlet extends HttpServlet {
             //请求转发，多个servlet配合工作，避免职责不单一的情况
             req.getRequestDispatcher("page").forward(req,resp);
         }
-
     }
 
 //    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

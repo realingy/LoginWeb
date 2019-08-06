@@ -6,10 +6,7 @@ import com.ingy.service.impl.LoginServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet(name = "CookieServlet")
@@ -49,6 +46,8 @@ public class CookieServlet extends HttpServlet {
                         LoginService ls=new LoginServiceImpl();
                         User u=ls.checkLoginService(uid);
                         if(u!=null) {
+                            HttpSession hs=req.getSession();
+                            hs.setAttribute("user",u);
 //                            resp.getWriter().write("登陆成功！");
                             req.getRequestDispatcher("main").forward(req,resp);
                             return;
