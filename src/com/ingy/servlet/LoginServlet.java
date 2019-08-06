@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
             for (Cookie ck:cks) {
                 String n = ck.getName();
                 String v = ck.getValue();
-                System.out.println(n + "::::::::::::::" + v);
+                System.out.println(n + ":" + v);
             }
 
 //            resp.getWriter().write("登陆成功！");
