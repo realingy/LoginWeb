@@ -43,4 +43,14 @@
         <url-pattern>/main</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>info</servlet-name>
+        <servlet-class>com.ingy.servlet.InfoServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>info</servlet-name>
+        <url-pattern>/info</url-pattern>
+    </servlet-mapping>
+
 </web-app>
