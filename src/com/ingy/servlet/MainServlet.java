@@ -21,6 +21,9 @@ public class MainServlet extends HttpServlet {
         //获取请求数据
         User u=(User)req.getSession().getAttribute("user");
 
+        //获取网页浏览次数
+        int count=(int)req.getServletContext().getAttribute("count");
+
         //响应请求结果
         //获取request的作用域数据
 //        String str = (String) req.getAttribute("uname");
@@ -38,6 +41,7 @@ public class MainServlet extends HttpServlet {
             resp.getWriter().write("</table>");
             resp.getWriter().write("<hr/>");
             resp.getWriter().write("</form>");
+            resp.getWriter().write("当前网页浏览次数为："+count);
             resp.getWriter().write("<form action='info' method='get'>");
             resp.getWriter().write("<table width='50%>'");
             resp.getWriter().write("<tr>");

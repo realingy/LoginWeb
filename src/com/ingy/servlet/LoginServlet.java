@@ -4,10 +4,18 @@ import com.ingy.pojo.User;
 import com.ingy.service.LoginService;
 import com.ingy.service.impl.LoginServiceImpl;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+
+/*
+    使用ServletContext实现网络计数器
+
+
+*/
+
 
 @WebServlet(name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -50,8 +58,19 @@ public class LoginServlet extends HttpServlet {
             HttpSession hs=req.getSession();
             hs.setAttribute("user",u);
 
-//            resp.getWriter().write("登陆成功！");
-//            req.setAttribute("uname", u.getUname());
+            //网页计数器
+            ServletContext sc=req.getServletContext();
+            if(null != sc.getAttribute("count")) {
+                int count = (int) sc.getAttribute("count");
+                //计数自增
+                count++;
+                //存ServletContext
+                sc.setAttribute("count", count);
+            } else {
+                sc.setAttribute("count", 1);
+            }
+
+            //重定向
             req.getRequestDispatcher("main").forward(req,resp);
         } else {
 //            resp.getWriter().write("登陆失败！");
