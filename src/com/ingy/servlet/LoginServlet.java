@@ -11,11 +11,11 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 /*
-    使用ServletContext实现网络计数器
-
-
+    1）
+    2）使用Cookie实现一段时间内免密登录
+    3）使用session实现用户信息共享
+    4）使用ServletContext实现网络计数器
 */
-
 
 @WebServlet(name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -46,13 +46,14 @@ public class LoginServlet extends HttpServlet {
             c.setPath("ck");
             //添加Cookie信息
             resp.addCookie(c);
+            System.out.println("添加Cookie!");
 
-            Cookie[] cks=req.getCookies();
-            for (Cookie ck:cks) {
-                String n = ck.getName();
-                String v = ck.getValue();
-                System.out.println(n + ":" + v);
-            }
+//            Cookie[] cks=req.getCookies();
+//            for (Cookie ck:cks) {
+//                String n = ck.getName();
+//                String v = ck.getValue();
+////                System.out.println(n + ":" + v);
+//            }
 
             //将数据存储到session中
             HttpSession hs=req.getSession();

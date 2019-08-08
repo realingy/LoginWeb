@@ -4,6 +4,7 @@ import com.ingy.pojo.User;
 import com.ingy.service.LoginService;
 import com.ingy.service.impl.LoginServiceImpl;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -31,7 +32,7 @@ public class CookieServlet extends HttpServlet {
                 for (Cookie c:cks) {
                     String name=c.getName();
                     String value=c.getValue();
-                    System.out.println(name+":"+value);
+                    System.out.println("Cookie信息: " + name+":" + value);
 
                     if("uid".equals(c.getName())) {
                         uid=c.getValue();
@@ -48,11 +49,22 @@ public class CookieServlet extends HttpServlet {
                         if(u!=null) {
                             HttpSession hs=req.getSession();
                             hs.setAttribute("user",u);
-//                            resp.getWriter().write("登陆成功！");
+
+                            //网页计数器
+                            ServletContext sc=req.getServletContext();
+                            if(null != sc.getAttribute("count")) {
+                                int count = (int) sc.getAttribute("count");
+                                //计数自增
+                                count++;
+                                //存ServletContext
+                                sc.setAttribute("count", count);
+                            } else {
+                                sc.setAttribute("count", 1);
+                            }
+
                             req.getRequestDispatcher("main").forward(req,resp);
                             return;
                         } else {
-                            System.out.println("11111111111111111111111111");
                             //请求转发
                             req.getRequestDispatcher("page").forward(req,resp);
                             return;
@@ -62,7 +74,6 @@ public class CookieServlet extends HttpServlet {
             } else {
                 //响应处理结果
                 //请求转发
-                System.out.println("22222222222222222222222222222");
                 req.getRequestDispatcher("page").forward(req,resp);
             }
 
