@@ -53,4 +53,15 @@
         <url-pattern>/info</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>init</servlet-name>
+        <servlet-class>com.ingy.servlet.InitServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>init</servlet-name>
+        <url-pattern>/init</url-pattern>
+    </servlet-mapping>
+
 </web-app>
