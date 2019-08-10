@@ -41,9 +41,11 @@
             font-weight: bold;
         }
         -->
-    </style></head>
+    </style>
+</head>
+
 <style type="text/css">
-    <!--.link {
+    <!-- .link {
         color : #000000;
         text-decoration : none;
     }A.link:hover {
@@ -51,8 +53,10 @@
      }A.link:active {
           color : #000000;
           text-decoration : none;
-      }//-->
+      }
+    -->
 </style>
+
 <style type="text/css">
     <!--
     #slidemenubar2{position:absolute;left:-110pt;width:120pt;top:100pt;border:1.5pt solid black;
@@ -123,7 +127,10 @@
         else登录f (window.drawit)
         clearInterval(drawit)
     }</script>
+
 <body>
+    <%--获取request的作用域数据--%>
+        <%String str = (String) request.getAttribute("str");%>
 <p>&nbsp;</p>
 <p align="center" class="style1 style3">欢迎会员登录系统</p>
 
@@ -133,10 +140,10 @@
 <p>&nbsp;</p>
 
 <form name="form1" method="post" action="login">
-    <table width="230" border="1" align="center" cellpadding="0" cellspacing="0">
+    <table width="300" border="0" align="center" cellpadding="0" cellspacing="0">
         <tr>
             <td width="86" height="46"><div align="center">用户名:</div></td>
-            <td width="138"><div align="center">
+            <td width="123"><div align="center">
                 <input name="uname" type="text" id="uname" size="15">
             </div></td>
         </tr>
@@ -146,7 +153,14 @@
                 <input name="pwd" type="Password" id="pwd" size="15">
             </div></td>
         </tr>
+        <%if(str!=null) {%>
+        <tr>
+            <td height="48"><div align="center">&nbsp;</div></td>
+            <td><%=str%></td>
+        </tr>
+        <%}%>
     </table>
+
     <p align="center">
         <input name="Sub1" type="submit" id="Sub1" value="提交" onClick="od()">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
