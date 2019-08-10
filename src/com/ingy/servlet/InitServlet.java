@@ -1,11 +1,14 @@
 package com.ingy.servlet;
 
+import sun.security.krb5.internal.SeqNumber;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.Enumeration;
 
 @WebServlet(name = "InitServlet")
 public class InitServlet extends HttpServlet {
@@ -17,7 +20,7 @@ public class InitServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
 
-        System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
+//        System.out.println("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
 
         //获取文件路径
         String path=this.getServletContext().getRealPath("count/count.txt");

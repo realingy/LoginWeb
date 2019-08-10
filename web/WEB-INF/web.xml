@@ -56,7 +56,7 @@
     <servlet>
         <servlet-name>init</servlet-name>
         <servlet-class>com.ingy.servlet.InitServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
+<!--        <load-on-startup>1</load-on-startup>-->
     </servlet>
 
     <servlet-mapping>
